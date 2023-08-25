@@ -1,0 +1,22 @@
+[
+    {
+        "card":"src/assets/shoping cart/Square Icon.png",
+        "cardtitle":"CART",
+        "cardpara":"Review all your product and edit the number."
+    },
+    {
+        "card":"src/assets/shoping cart/Square Icon (1).png",
+        "cardtitle":"CUSTOMER INFORMATION",
+        "cardpara":"Add your name, phone number and address."
+    },
+    {
+        "card":"src/assets/shoping cart/Square Icon (2).png",
+        "cardtitle":"SHIPPING & PAYMENT",
+        "cardpara":"With many payment method, included yours."
+    },
+    {
+        "card":"src/assets/shoping cart/Square Icon (2).png",
+        "cardtitle":"REVIEW",
+        "cardpara":"View all your information before the confimation."
+    }
+]
