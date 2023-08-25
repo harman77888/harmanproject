@@ -1036,3 +1036,8 @@ input.form_data_input.form_btn {
   background-color: yellowgreen;
   color: #fff;
 }
+          
+.mydata{
+  width: 100%;
+  text-align: center;
+}

@@ -2,8 +2,6 @@ import React, { useState, useRef } from "react";
 
 const Register = () => {
   const formEl = useRef();
-
-  
   let initialForm = {
     name: "",
     email: "",
@@ -16,6 +14,7 @@ const Register = () => {
 
   let [formData, setFormData] = useState(initialForm);
   let [resMsg, setresMsg] = useState("")
+  const [user,setuser]=useState([])
 
   // capture data when user input 
   let setdata = (e) => {
@@ -34,7 +33,12 @@ const Register = () => {
     if(formData.password === "") { setresMsg("Please enter your password."); return}
     if(formData.mobile === "") { setresMsg("Please enter your mobile."); return}
     if(formData.gender === "")  {setresMsg("Select your gender."); return}
-
+    var emailFormat = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+    if(emailFormat.test(formData.email)===false){
+     alert("enter valid email")
+     return
+    };
+    
     var requestOptions = {
       method: "POST",
       headers: {
@@ -44,7 +48,7 @@ const Register = () => {
       body: JSON.stringify(formData),
     };
 
-    let request =  fetch("http://localhost:3000/product/productUsers", requestOptions)
+    let request =  fetch("http://localhost:3000/productuser/productUsers", requestOptions)
       .then((response) => response.json())
       .then((result) => {
          formEl.current && formEl.current.reset(); // reset form data 
@@ -56,6 +60,26 @@ const Register = () => {
       });
 
   };
+
+let getData = async (e) =>{
+e.preventDefault();
+var requestOptions = {
+  method: "GET",
+  headers: {
+    "Content-Type":"application/json"
+  },
+
+}
+   
+     let request = await fetch("http://localhost:3000/productuser/removeuser", requestOptions)
+     .then((response) => response.json())
+     .then((result) => {
+   
+      setuser(result.data)
+    })
+    
+};
+
 
   return (
     <>
@@ -139,6 +163,32 @@ const Register = () => {
               </a>
             </form>
           </div>
+          <button type="button"className="login_register" onClick={(e)=>getData(e)}>Get data</button>
+          <table className="mydata"border="2px solid black">
+            <thead>
+              <th>name</th>
+              <th>email</th>
+              <th>mobile</th>
+              <th>gender</th>
+              <th>password</th>
+              <th>Action</th>
+            </thead>
+            <tbody>
+              {user.map((item,index)=>{
+                return(
+                  <tr key={index}>
+                  <td>{item.name}</td>
+                  <td>{item.email}</td>
+                  <td>{item.mobile}</td>
+                  <td>{item.gender}</td>
+                  <td>{item.password}</td>
+                  <td><button type="button"className="login_register"  >Delete</button> <button type="button" className="login_register" >Edit</button></td>
+                </tr>
+                
+                )
+              })}
+            </tbody>
+          </table>
         </div>
       </section>
     </>

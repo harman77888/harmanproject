@@ -34,7 +34,7 @@ const User = () => {
       body: JSON.stringify(formData),
     }
 
-    let request =  fetch("http://localhost:3000/product/getdatabackend", requestOptions)
+    let request =  fetch("http://localhost:3000/productuser/getdatabackend", requestOptions)
       .then((response) => response.json())
       .then((result) => {
           formEl.current && formEl.current.reset(); // reset form data

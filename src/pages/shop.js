@@ -6,7 +6,6 @@ import Line from "../../src/assets/shop/Rectangle 2.png";
 import Down from "../../src/assets/shop/chevron-down.png";
 import Menu from "../../src/assets/shop/menu.png";
 import Grid from "../../src/assets/shop/view-grid.png";
-
 import Star from "../../src/star 2.png";
 import Lights from "../../src/Img 8.png";
 import Right from "../../src/chevron-right 2.png";
